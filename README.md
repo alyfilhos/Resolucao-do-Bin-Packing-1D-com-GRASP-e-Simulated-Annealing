@@ -6,5 +6,4 @@ Nome da Equipe:
   
 Integrantes:
   Alysson Victor Almeida Souza
-  
-  Lucas Teixeira Correia
+  e Lucas Teixeira Correia
