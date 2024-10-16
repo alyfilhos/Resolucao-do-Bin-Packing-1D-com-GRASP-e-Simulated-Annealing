@@ -4,21 +4,36 @@ import SA
 
 #Este é o arquivo que contem a leitura do arquivo com as instancias e os códigos que geram os gráficos utilizados na análise dos algorítmos.
 #Obs: os arquivos devem seguir o seguinte formato:
-    #Um item por linha
-#A quantidade de itens é definida pelo tamanho do vetor formado com as linhas do arquivo.
+    #A primeira linha deve conter a capacidade, quantidade de itens e melhor solução respectivamente.
+    #A partir da segunda linha o arquivo deve ter um item por linha
 
-with open('C:/Users/Alysson Victor/OneDrive/Documentos/metaheuristica 2024.2/instancia3.txt', 'r') as arquivo:
-    vetor = [int(linha.strip()) for linha in arquivo]
+def ReadInput(arquivo):
+    with open(arquivo, 'r') as arquivo:
+        primeira_linha = arquivo.readline().strip().split()
+        valor1, valor2, valor3 = int(primeira_linha[0]), int(primeira_linha[1]), int(primeira_linha[2])
+
+        vetor = []
+        for linha in arquivo:
+            vetor.append(int(linha.strip()))
+
+    return valor1, valor2, valor3, vetor
+
+# Exemplo de uso
+arquivo = 'C:/Users/Alysson Victor/OneDrive/Documentos/metaheuristica 2024.2/instancia1.txt'
+capacidade, qtditens, melhorresposta, vetor = ReadInput(arquivo)
+
+print(f"Valores da primeira linha: {capacidade}, {qtditens}, {melhorresposta}")
+print("Vetor com os valores restantes:", vetor)
 
 todososresultadosbins = []
 todastemperaturas =[]
 tdsiteracoes =[]
 
 start = time.time()
-melhorcaixas, melhorbins, todastemperaturas, todososresultadosbins, tdsiteracoes = SA.simulated_annealing(vetor, todastemperaturas, todososresultadosbins, tdsiteracoes)
+melhorcaixas, melhorbins, todastemperaturas, todososresultadosbins, tdsiteracoes = SA.simulated_annealing(vetor, todastemperaturas, todososresultadosbins, tdsiteracoes, capacidade)
 end = time.time()
 tempo = end - start
-print(f"Solução final encontrada com a hibridização do GRASP com o Simulated Annealing:\n{melhorcaixas}\nQuantidade de bins: {melhorbins}\nTempo de execução: {tempo:.4f} segundos")
+print(f"Solução final encontrada com o Simulated Annealing:\n{melhorcaixas}\nQuantidade de bins: {melhorbins}\nTempo de execução: {tempo:.4f} segundos")
 
 plt.plot(todastemperaturas, todososresultadosbins)
 plt.xlabel('Temperatura')
