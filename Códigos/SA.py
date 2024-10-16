@@ -1,10 +1,9 @@
 import random
 import math
-import GRASP
 
 #Este é o algorítmo Simulated Annealing (SA), algumas alterações podem ser feitas nas funções para fins de testes:
     #Alterações disponíveis:
-        #O parâmetro alfa utilizado como critério de aceitação de soluções pode ser alterado, assim como a temperatura inicial, a taxa de resfriamento e a capacidade das caixas(linha 34).
+        #O parâmetro alfa utilizado como critério de aceitação de soluções pode ser alterado, assim como a temperatura inicial, a taxa de resfriamento e a capacidade das caixas(linha 37).
 
 def best_fit_construircaixas(vetor, capacidade):
     caixas = []  # lista para armazenar as caixas
@@ -34,8 +33,7 @@ def perturbarsol(vetor):
     random.shuffle(solucao) 
     return solucao
 
-def simulated_annealing(vetor, todastemperaturas, todososresultadosbins, tdsiteracoes):
-    capacidade = 150
+def simulated_annealing(vetor, todastemperaturas, todososresultadosbins, tdsiteracoes, capacidade):
     tempinicial = 1000
     resfriamento = 0.95
 
