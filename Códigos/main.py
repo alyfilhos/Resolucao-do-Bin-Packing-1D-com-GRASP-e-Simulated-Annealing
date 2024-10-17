@@ -22,7 +22,7 @@ def ReadInput(arquivo):
 arquivo = 'C:/Users/Alysson Victor/OneDrive/Documentos/metaheuristica 2024.2/instancia1.txt'
 capacidade, qtditens, melhorresposta, vetor = ReadInput(arquivo)
 
-print(f"Valores da primeira linha: {capacidade}, {qtditens}, {melhorresposta}")
+print(f"Capacidade, qtd de ites e melhor resposta: {capacidade}, {qtditens}, {melhorresposta}")
 print("Vetor com os valores restantes:", vetor)
 
 todososresultadosbins = []
