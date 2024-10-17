@@ -41,14 +41,13 @@ def simulated_annealing(vetor, todastemperaturas, todososresultadosbins, tdsiter
     melhorsolucao = solucaoatual[:]
     melhorcaixas = calculacaixas(solucaoatual,capacidade)
     melhorbins = len(melhorcaixas)
-    
+    caixasatual = melhorcaixas
     temperatura = tempinicial
     c=0
 
     while temperatura > 1:
         novasolucao = perturbarsol(solucaoatual)  
         novascaixas = calculacaixas(novasolucao, capacidade)
-        caixasatual = calculacaixas(solucaoatual, capacidade)
 
         binsnova = len(novascaixas)
         binsatual = len(caixasatual)
@@ -60,6 +59,7 @@ def simulated_annealing(vetor, todastemperaturas, todososresultadosbins, tdsiter
 
         if taxavariacao < 0 or random.uniform(0, 1) < math.exp(-taxavariacao / temperatura):
             solucaoatual = novasolucao
+            caixasatual = novascaixas
 
         if binsnova < melhorbins:
             melhorsolucao = novasolucao
